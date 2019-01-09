@@ -1,0 +1,17 @@
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: result
+  namespace: vote
+spec:
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: result
+  minReplicas: 1
+  maxReplicas: 50
+  metrics:
+  - type: Pods
+    pods:
+      metricName: response_latency_ms_99th
+      targetAverageValue: 8

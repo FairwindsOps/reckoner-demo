@@ -1,0 +1,21 @@
+apiVersion: rbacmanager.reactiveops.io/v1beta1
+kind: RBACDefinition
+metadata:
+  name: rbac-manager-definition
+  namespace: kube-system
+rbacBindings:
+  - name: admins
+    subjects:
+      - kind: ServiceAccount
+        name: circleci
+        namespace: kube-system
+    clusterRoleBindings:
+      - clusterRole: cluster-admin
+  - name: readonly
+    subjects:
+      - kind: ServiceAccount
+        name: read-only
+        namespace: kube-system
+    clusterRoleBindings:
+      - clusterRole: view
+
