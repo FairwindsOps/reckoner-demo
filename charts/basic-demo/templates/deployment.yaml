@@ -25,11 +25,11 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: REFRESH_INTERVAL
-              value: {{ .values.demo.refreshInterval | quote }}
+              value: {{ .Values.demo.refreshInterval | quote }}
             - name: TITLE
-              value: {{ .values.demo.title | quote }}
+              value: {{ .Values.demo.title | quote }}
             - name: METADATA
-              value: {{ .values.demo.metadata | quote }}
+              value: {{ .Values.demo.metadata | quote }}
           ports:
             - name: http
               containerPort: 8080
