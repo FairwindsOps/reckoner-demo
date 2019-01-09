@@ -23,9 +23,8 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          #command: ["k6", "run", "/k6/load.js"]
-          command: ["sleep", "10000"]
-          #args: ["--out", "influxdb"]
+          command: ["k6", "run", "/k6/load.js"]
+          args: ["--out", "influxdb"]
           env:
             - name: K6_DURATION
               value: "0"
@@ -54,7 +53,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
         - name: k6files
-          configmap:
+          configMap:
             name: {{ include "load-generator.fullname" . }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
