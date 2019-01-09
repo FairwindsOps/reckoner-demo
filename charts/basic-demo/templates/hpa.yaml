@@ -12,5 +12,5 @@ spec:
   metrics:
   - type: Pods
     pods:
-      metricsName: {{ .Values.hpa.metric }}
+      metricName: {{ .Values.hpa.metric }}
       targetAverageValue: {{ .Values.hpa.target }}
