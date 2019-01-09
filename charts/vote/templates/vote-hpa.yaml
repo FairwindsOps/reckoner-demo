@@ -1,13 +1,12 @@
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: result
-  namespace: vote
+  name: vote
 spec:
   scaleTargetRef:
     apiVersion: extensions/v1beta1
     kind: Deployment
-    name: result
+    name: vote
   minReplicas: 1
   maxReplicas: 50
   metrics:

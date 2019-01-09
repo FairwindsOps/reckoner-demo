@@ -6,19 +6,18 @@ metadata:
     kubernetes.io/ingress.class: nginx-ingress
     nginx.ingress.kubernetes.io/upstream-vhost: $service_name.$namespace.svc.cluster.local
   labels:
-    app: result
-  name: result
-  namespace: vote
+    app: vote
+  name: vote
 spec:
   rules:
-  - host: result.sudermanjr.com
+  - host: vote.sudermanjr.com
     http:
       paths:
       - backend:
-          serviceName: result
-          servicePort: 5001
+          serviceName: vote
+          servicePort: 5000
         path: /
   tls:
   - hosts:
-    - result.sudermanjr.com
-    secretName: result-tls-secret
+    - vote.sudermanjr.com
+    secretName: vote-tls-secret

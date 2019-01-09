@@ -1,14 +1,14 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: vote
-  namespace: vote
+  name: result
 spec:
+  replicas: 1
   template:
     metadata:
       labels:
-        app: vote
+        app: result
     spec:
       containers:
-      - image: dockersamples/examplevotingapp_vote:before
-        name: vote
+      - image: dockersamples/examplevotingapp_result:before
+        name: result

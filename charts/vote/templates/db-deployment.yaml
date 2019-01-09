@@ -2,7 +2,6 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: db
-  namespace: vote
 spec:
   replicas: 1
   template:
@@ -18,4 +17,4 @@ spec:
           name: db-data
       volumes:
       - name: db-data
-        emptyDir: {} 
+        emptyDir: {}

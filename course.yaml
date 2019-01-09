@@ -203,6 +203,12 @@ charts:
             gnetId: 2587
             revision: 3
             datasource: InfluxDB
+  vote:
+    namespace: vote
+    version: master
+    repository:
+      git: git@github.com:sudermanjr/reckoner-demo.git
+      path: /charts
   load-generator:
     namespace: load
     version: master
@@ -211,4 +217,3 @@ charts:
       path: /charts
     values:
       replicas: 2
-
