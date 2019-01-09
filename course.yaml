@@ -217,3 +217,10 @@ charts:
       path: /charts
     values:
       replicas: 2
+  basic-demo:
+    namespace: demo
+    version: master
+    repository:
+      git: git@github.com:sudermanjr/reckoner-demo.git
+      path: /charts
+
