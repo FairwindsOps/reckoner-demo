@@ -10,7 +10,7 @@ metadata:
   name: result
 spec:
   rules:
-  - host: result.sudermanjr.com
+  - host: res.sudermanjr.com
     http:
       paths:
       - backend:
@@ -19,5 +19,5 @@ spec:
         path: /
   tls:
   - hosts:
-    - result.sudermanjr.com
+    - res.sudermanjr.com
     secretName: result-tls-secret

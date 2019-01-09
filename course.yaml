@@ -161,11 +161,11 @@ charts:
       ingress:
         enabled: true
         hosts:
-          - reckoner-grafana.sudermanjr.com
+          - grafana-demo.sudermanjr.com
         tls:
           - secretName: grafana-tls-secret
             hosts:
-              - reckoner-grafana.sudermanjr.com
+              - grafana-demo.sudermanjr.com
       persistence.enabled: false
       ingress.annotations.kubernetes\.io\/ingress\.class: "nginx-ingress"
       ingress.annotations.certmanager\.k8s\.io\/cluster-issuer: letsencrypt-prod
@@ -227,4 +227,4 @@ charts:
       service:
         type: LoadBalancer
         annotations:
-          external-dns.alpha.kubernetes.io/hostname: "demo.sudermanjr.com."
+          external-dns.alpha.kubernetes.io/hostname: "meetup.sudermanjr.com"

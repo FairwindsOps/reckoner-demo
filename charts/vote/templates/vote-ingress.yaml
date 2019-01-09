@@ -10,7 +10,7 @@ metadata:
   name: vote
 spec:
   rules:
-  - host: vote.sudermanjr.com
+  - host: interact.sudermanjr.com
     http:
       paths:
       - backend:
@@ -19,5 +19,5 @@ spec:
         path: /
   tls:
   - hosts:
-    - vote.sudermanjr.com
+    - interact.sudermanjr.com
     secretName: vote-tls-secret
