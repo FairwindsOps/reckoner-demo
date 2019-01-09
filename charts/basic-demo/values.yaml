@@ -5,6 +5,12 @@ demo:
   title: "Reckoner Demo"
   metadata: "Installed with Reckoner"
 
+hpa:
+  min: 3
+  max: 20
+  metric: response_latency_ms_99th
+  target: 30
+
 image:
   repository: ehazlett/docker-demo
   tag: latest
