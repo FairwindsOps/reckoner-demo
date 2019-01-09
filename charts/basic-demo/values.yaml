@@ -20,10 +20,8 @@ nameOverride: ""
 fullnameOverride: ""
 
 service:
-  type: LoadBalancer
+  type: ClusterIP
   port: 80
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: "demo.sudermanjr.com."
 
 ingress:
   enabled: false

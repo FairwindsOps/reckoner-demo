@@ -223,4 +223,8 @@ charts:
     repository:
       git: git@github.com:sudermanjr/reckoner-demo.git
       path: /charts
-
+    values:
+      service:
+        type: LoadBalancer
+        annotations:
+          external-dns.alpha.kubernetes.io/hostname: "demo.sudermanjr.com."
