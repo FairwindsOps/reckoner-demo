@@ -23,6 +23,13 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: REFRESH_INTERVAL
+              value: {{ .values.demo.refreshInterval | quote }}
+            - name: TITLE
+              value: {{ .values.demo.title | quote }}
+            - name: METADATA
+              value: {{ .values.demo.metadata | quote }}
           ports:
             - name: http
               containerPort: 8080

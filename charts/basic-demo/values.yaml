@@ -2,6 +2,11 @@ replicaCount: 5
 
 URL: "http://demo.sudermanjr.com"
 
+demo:
+  refreshInterval: 100 # milliseconds
+  title: "Reckoner Demo"
+  metadata: "Installed with Reckoner"
+
 image:
   repository: ehazlett/docker-demo
   tag: latest
