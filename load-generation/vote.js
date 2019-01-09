@@ -9,7 +9,7 @@ export let options = {
     }
 };
 
-export let url = "https://vote.sudermanjr.com/"
+export let url = "https://interact.sudermanjr.com/"
 export let errorRate = new Rate("errors");
 var voteLetter = ''
 

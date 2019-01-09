@@ -227,4 +227,4 @@ charts:
       service:
         type: LoadBalancer
         annotations:
-          external-dns.alpha.kubernetes.io/hostname: "meetup.sudermanjr.com"
+          external-dns\.alpha\.kubernetes\.io\/hostname: "meetup.sudermanjr.com"
