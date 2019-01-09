@@ -1,9 +1,9 @@
 gcloud container \
     --project sudermanjr \
-    clusters create reckoner \
+    clusters create reckoner-demo \
     --zone us-central1-a \
     --node-locations us-central1-a \
-    --machine-type n1-standard-2 \
+    --machine-type n1-standard-4 \
     --enable-autoscaling \
     --max-nodes 20 \
     --min-nodes 1 \
