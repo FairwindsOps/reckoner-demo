@@ -11,7 +11,6 @@ gcloud container \
     --enable-autorepair \
     --cluster-version 1.11.5-gke.5 \
     --no-enable-legacy-authorization \
-    --enable-network-policy \
     --enable-cloud-logging \
     --enable-cloud-monitoring \
     --enable-autoupgrade \

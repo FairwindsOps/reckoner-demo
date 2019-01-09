@@ -13,4 +13,4 @@ spec:
   - type: Pods
     pods:
       metricName: response_latency_ms_99th
-      targetAverageValue: 8
+      targetAverageValue: 200
