@@ -204,10 +204,11 @@ charts:
             revision: 3
             datasource: InfluxDB
   load-generator:
+    namespace: load
+    version: master
     repository:
       git: git@github.com:sudermanjr/reckoner-demo.git
       path: /charts
-      version: master
     values:
       replicas: 2
 
