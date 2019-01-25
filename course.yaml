@@ -12,6 +12,8 @@ repositories:
     url: https://kubernetes-charts.storage.googleapis.com
   influx:
     url: http://influx-charts.storage.googleapis.com
+  reactiveops-stable:
+    url: https://charts.reactiveops.com/stable
 charts:
   prometheus-adapter:
     repository: stable
@@ -42,9 +44,8 @@ charts:
         limits.memory: 100Mi
   rbac-manager:
     chart: chart
-    version: 0.4.2
-    repository:
-      git: git@github.com:reactiveops/rbac-manager.git
+    version: 0.4.3
+    repository: reactiveops-stable
     hooks:
       post_install:
       - kubectl apply -f manifests/reckoner/rbacdefinition.yaml
