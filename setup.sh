@@ -1,5 +1,7 @@
-kubectl create clusterrolebinding cluster-admin-binding-awsuderman \
-        --clusterrole=cluster-admin --user=AWSuderman@gmail.com
+#!/bin/bash
+
+kubectl create clusterrolebinding cluster-admin-binding-gcloudadmin \
+        --clusterrole=cluster-admin --user="$(gcloud auth list --filter=status:ACTIVE --format="value(account)")"
 
 linkerd install --tls optional --proxy-auto-inject --ha --controller-replicas=2 | kubectl apply -f -
 
@@ -14,7 +16,7 @@ helm init --upgrade --service-account tiller
 
 linkerd check
 
-echo -n $CLOUDFLARE_API_TOKEN > /tmp/api-key
+echo -n "$CLOUDFLARE_API_TOKEN" > /tmp/api-key
 kubectl -n infra delete secret cloudflare-api-key-secret || true
 kubectl -n infra create secret generic cloudflare-api-key-secret --from-file=api-key=/tmp/api-key
 rm /tmp/api-key
