@@ -230,7 +230,7 @@ charts:
       pre_install:
         - kubectl create ns vote > /dev/null 2>&1 || true
         - kubectl annotate ns vote linkerd.io/inject=enabled --overwrite
-    version: master
+    version: kubernetes-meetup
     repository:
       git: git@github.com:sudermanjr/reckoner-demo.git
       path: /charts
@@ -240,7 +240,7 @@ charts:
       pre_install:
         - kubectl create ns load > /dev/null 2>&1 || true
         - kubectl annotate ns load linkerd.io/inject=enabled --overwrite
-    version: master
+    version: kubernetes-meetup
     repository:
       git: git@github.com:sudermanjr/reckoner-demo.git
       path: /charts
@@ -253,7 +253,7 @@ charts:
         - kubectl create ns demo > /dev/null 2>&1 || true
         - kubectl annotate ns demo linkerd.io/inject=enabled --overwrite
         - kubectl label ns demo circleci-admin=yes --overwrite
-    version: master
+    version: kubernetes-meetup
     repository:
       git: git@github.com:sudermanjr/reckoner-demo.git
       path: /charts
