@@ -1,7 +1,7 @@
 URL: "http://demo.sudermanjr.com"
 
 demo:
-  refreshInterval: 100 # milliseconds
+  refreshInterval: 500 # milliseconds
   title: "Reckoner Demo"
   metadata: "Installed with Reckoner"
 
