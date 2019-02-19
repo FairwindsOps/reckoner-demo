@@ -4,18 +4,17 @@ metadata:
   name: rbac-manager-definition
   namespace: kube-system
 rbacBindings:
-  - name: admins
+  - name: circleci
     subjects:
       - kind: ServiceAccount
         name: circleci
-        namespace: kube-system
-    clusterRoleBindings:
+        namespace: helm-system
+    roleBindings:
+      - clusterRole: tiller-user
+        namespace: helm-system
       - clusterRole: cluster-admin
-  - name: readonly
-    subjects:
-      - kind: ServiceAccount
-        name: read-only
-        namespace: kube-system
+        namespaceSelector:
+          matchLabels:
+            circleci-admin: "yes"
     clusterRoleBindings:
-      - clusterRole: view
-
+      - clusterRole: circleci

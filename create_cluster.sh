@@ -1,5 +1,7 @@
+#!/bin/bash
+
 gcloud container \
-    --project sudermanjr \
+    --project reactiveopsio \
     clusters create reckoner-demo \
     --zone us-central1-a \
     --node-locations us-central1-a \
@@ -9,7 +11,7 @@ gcloud container \
     --min-nodes 1 \
     --preemptible \
     --enable-autorepair \
-    --cluster-version 1.11.5-gke.5 \
+    --cluster-version 1.11.7-gke.4 \
     --no-enable-legacy-authorization \
     --enable-cloud-logging \
     --enable-cloud-monitoring \
@@ -18,4 +20,3 @@ gcloud container \
     --addons HorizontalPodAutoscaling \
     --scopes cloud-platform \
     --async
-

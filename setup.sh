@@ -16,7 +16,11 @@ helm init --upgrade --service-account tiller
 
 linkerd check
 
-echo -n "$CLOUDFLARE_API_TOKEN" > /tmp/api-key
-kubectl -n infra delete secret cloudflare-api-key-secret || true
-kubectl -n infra create secret generic cloudflare-api-key-secret --from-file=api-key=/tmp/api-key
+for ns in "external-dns" "cert-manager"; do
+    echo -n "$CLOUDFLARE_API_TOKEN" > /tmp/api-key
+    kubectl create ns "$ns"
+    kubectl -n "$ns" delete secret cloudflare-api-key-secret || true
+    kubectl -n "$ns" create secret generic cloudflare-api-key-secret --from-file=api-key=/tmp/api-key
+done
+
 rm /tmp/api-key
