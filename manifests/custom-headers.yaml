@@ -4,5 +4,3 @@ data:
 kind: ConfigMap
 metadata:
   name: custom-headers
-  namespace: infra
-
