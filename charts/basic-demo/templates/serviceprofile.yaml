@@ -1,18 +1,10 @@
 apiVersion: linkerd.io/v1alpha1
 kind: ServiceProfile
 metadata:
-  name: {{ include "basic-demo.fullname" . }}
+  name: {{ include "basic-demo.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local
 spec:
   routes:
-  - name: '/ping'
+  - name: 'GET /ping'
     condition:
       pathRegex: '/ping'
       method: GET
-    isRetryable: true
-    responseClasses:
-    - condition:
-        status:
-          min: 500
-          max: 599
-      isFailure: true
-      timeout: 250ms
