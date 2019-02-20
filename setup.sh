@@ -6,7 +6,6 @@ kubectl create clusterrolebinding cluster-admin-binding-gcloudadmin \
 linkerd install --tls optional --proxy-auto-inject --ha --controller-replicas=2 | kubectl apply -f -
 
 kubectl create ns helm-system || true
-kubectl create ns infra || true
 
 export TILLER_NAMESPACE=helm-system
 kubectl -n "${TILLER_NAMESPACE:-kube-system}" create sa tiller --dry-run -o yaml --save-config | kubectl apply -f -;
