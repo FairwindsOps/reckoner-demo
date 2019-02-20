@@ -62,6 +62,8 @@ charts:
       hpa:
         metric: route_response_latency_ms_99th_get_ping
         target: 30
+        max: 40
+        min: 3
       ingress:
         enabled: true
         annotations:
