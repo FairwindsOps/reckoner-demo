@@ -34,10 +34,8 @@ charts:
       pre_install:
         - kubectl create ns load > /dev/null 2>&1 || true
         - kubectl annotate ns load linkerd.io/inject=enabled --overwrite
-    version: sudermanjr/demo-charts
-    repository:
-      git: git@github.com:reactiveops/charts
-      path: /incubator
+    version: 0.1.0
+    repository: reactiveops-incubator
     files:
       - manifests/load-generator-values.yaml
   basic-demo:
@@ -47,10 +45,8 @@ charts:
         - kubectl create ns demo > /dev/null 2>&1 || true
         - kubectl annotate ns demo linkerd.io/inject=enabled --overwrite
         - kubectl label ns demo circleci-admin=yes --overwrite
-    version: sudermanjr/demo-charts
-    repository:
-      git: git@github.com:reactiveops/charts
-      path: /incubator
+    version: 0.1.0
+    repository: reactiveops-incubator
     set-values:
       linkerd:
         serviceProfile: true
