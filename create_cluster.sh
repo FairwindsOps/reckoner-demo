@@ -19,4 +19,5 @@ gcloud container \
     --addons NetworkPolicy \
     --addons HorizontalPodAutoscaling \
     --scopes cloud-platform \
+    --enable-vertical-pod-autoscaling \
     --async
