@@ -64,6 +64,8 @@ charts:
         target: 30
         max: 40
         min: 3
+      vpa:
+        enabled: true
       ingress:
         enabled: true
         annotations:
