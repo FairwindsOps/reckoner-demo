@@ -13,11 +13,6 @@ repositories:
   reactiveops-stable:
     url: https://charts.reactiveops.com/stable
 charts:
-  prometheus-adapter:
-    repository: stable
-    namespace: linkerd
-    files:
-      - ./manifests/prometheus-adapter.values.yml
   cert-manager:
     version: "v0.6.0"
     namespace: cert-manager
@@ -224,55 +219,3 @@ charts:
             gnetId: 2587
             revision: 3
             datasource: InfluxDB
-  vote:
-    namespace: vote
-    hooks:
-      pre_install:
-        - kubectl create ns vote > /dev/null 2>&1 || true
-        - kubectl annotate ns vote linkerd.io/inject=enabled --overwrite
-    version: kubernetes-meetup
-    repository:
-      git: git@github.com:sudermanjr/reckoner-demo.git
-      path: /charts
-  load-generator:
-    namespace: load
-    hooks:
-      pre_install:
-        - kubectl create ns load > /dev/null 2>&1 || true
-        - kubectl annotate ns load linkerd.io/inject=enabled --overwrite
-    version: kubernetes-meetup
-    repository:
-      git: git@github.com:sudermanjr/reckoner-demo.git
-      path: /charts
-    set-values:
-      replicaCount: 0
-  basic-demo:
-    namespace: demo
-    hooks:
-      pre_install:
-        - kubectl create ns demo > /dev/null 2>&1 || true
-        - kubectl annotate ns demo linkerd.io/inject=enabled --overwrite
-        - kubectl label ns demo circleci-admin=yes --overwrite
-    version: kubernetes-meetup
-    repository:
-      git: git@github.com:sudermanjr/reckoner-demo.git
-      path: /charts
-    set-values:
-      ingress:
-        enabled: true
-        annotations:
-          kubernetes\.io\/ingress\.class: "nginx-ingress"
-          certmanager\.k8s\.io\/cluster-issuer: letsencrypt-prod
-          nginx\.ingress\.kubernetes\.io\/upstream-vhost: $$service_name.$$namespace.svc.cluster.local
-        paths:
-          - /
-        hosts:
-          - meetup.sudermanjr.com
-        tls:
-          - secretName: basic-demo-tls
-            hosts:
-              - meetup.sudermanjr.com
-    values-strings:
-      ingress:
-        annotations:
-          nginx\.ingress\.kubernetes\.io\/ssl-redirect: "true"

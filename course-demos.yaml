@@ -1,0 +1,81 @@
+namespace: infra
+repository: stable
+minimum_versions:
+  helm: 2.12.3
+  reckoner: 1.0.1
+repositories:
+  incubator:
+    url: https://kubernetes-charts-incubator.storage.googleapis.com
+  stable:
+    url: https://kubernetes-charts.storage.googleapis.com
+  influx:
+    url: http://influx-charts.storage.googleapis.com
+  reactiveops-stable:
+    url: https://charts.reactiveops.com/stable
+charts:
+  prometheus-adapter:
+    repository: stable
+    namespace: linkerd
+    files:
+      - ./manifests/prometheus-adapter.values.yml
+  vote:
+    namespace: vote
+    hooks:
+      pre_install:
+        - kubectl create ns vote > /dev/null 2>&1 || true
+        - kubectl annotate ns vote linkerd.io/inject=enabled --overwrite
+    version: kubernetes-meetup
+    repository:
+      git: git@github.com:sudermanjr/reckoner-demo.git
+      path: /charts
+  load-generator:
+    namespace: load
+    hooks:
+      pre_install:
+        - kubectl create ns load > /dev/null 2>&1 || true
+        - kubectl annotate ns load linkerd.io/inject=enabled --overwrite
+    version: sudermanjr/demo-charts
+    repository:
+      git: git@github.com:reactiveops/charts
+      path: /incubator
+    files:
+      - manifests/load-generator-values.yaml
+  basic-demo:
+    namespace: demo
+    hooks:
+      pre_install:
+        - kubectl create ns demo > /dev/null 2>&1 || true
+        - kubectl annotate ns demo linkerd.io/inject=enabled --overwrite
+        - kubectl label ns demo circleci-admin=yes --overwrite
+    version: sudermanjr/demo-charts
+    repository:
+      git: git@github.com:reactiveops/charts
+      path: /incubator
+    set-values:
+      linkerd:
+        serviceProfile: true
+      demo:
+        title: "Kubernetes Meetup - Boulder"
+        metadata: "Brought to you by ReactiveOps"
+        refreshInterval: 400
+      hpa:
+        metric: route_response_latency_ms_99th_get_ping
+        target: 30
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes\.io\/ingress\.class: "nginx-ingress"
+          certmanager\.k8s\.io\/cluster-issuer: letsencrypt-prod
+          nginx\.ingress\.kubernetes\.io\/upstream-vhost: $$service_name.$$namespace.svc.cluster.local
+        paths:
+          - /
+        hosts:
+          - meetup.sudermanjr.com
+        tls:
+          - secretName: basic-demo-tls
+            hosts:
+              - meetup.sudermanjr.com
+    values-strings:
+      ingress:
+        annotations:
+          nginx\.ingress\.kubernetes\.io\/ssl-redirect: "true"
