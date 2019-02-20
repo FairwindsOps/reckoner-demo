@@ -28,3 +28,10 @@ rules:
         as: "${1}_99th"
       metricsQuery: 'histogram_quantile(0.99, sum(irate(<<.Series>>{<<.LabelMatchers>>, direction="inbound"}[5m])) by (le, <<.GroupBy>>))'
 
+    - seriesQuery: 'route_response_latency_ms_bucket{namespace!="",pod!="",rt_route="GET /ping"}'
+      resources:
+        template: '<<.Resource>>'
+      name:
+        matches: '^(.*)_bucket$'
+        as: "${1}_99th_get_ping"
+      metricsQuery: 'histogram_quantile(0.99, sum(irate(<<.Series>>{<<.LabelMatchers>>, direction="inbound"}[5m])) by (le, <<.GroupBy>>))'

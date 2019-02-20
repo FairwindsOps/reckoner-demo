@@ -8,7 +8,7 @@ demo:
 hpa:
   min: 3
   max: 20
-  metric: response_latency_ms_99th
+  metric: route_response_latency_ms_99th_get_ping
   target: 30
 
 image:
