@@ -54,6 +54,7 @@ charts:
     set-values:
       linkerd:
         serviceProfile: true
+        enableRetry: true
       demo:
         title: "Kubernetes Meetup - Boulder"
         metadata: "Brought to you by ReactiveOps"
