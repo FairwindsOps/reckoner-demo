@@ -1,7 +1,7 @@
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: vote
+  name: worker
 spec:
   scaleTargetRef:
     apiVersion: extensions/v1beta1
