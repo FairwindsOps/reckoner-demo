@@ -1,0 +1,16 @@
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: vote
+spec:
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: vote
+  minReplicas: 1
+  maxReplicas: 50
+  metrics:
+  - type: Pods
+    pods:
+      metricName: cpu
+      targetAverageValue: 80
