@@ -6,9 +6,9 @@ spec:
   scaleTargetRef:
     apiVersion: extensions/v1beta1
     kind: Deployment
-    name: vote
+    name: worker
   minReplicas: 1
-  maxReplicas: 50
+  maxReplicas: 20
   metrics:
   - type: Pods
     pods:

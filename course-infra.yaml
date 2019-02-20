@@ -92,8 +92,8 @@ charts:
         - kubectl annotate ns nginx-ingress linkerd.io/inject=enabled --overwrite
         - kubectl -n nginx-ingress apply -f manifests/custom-headers.yaml
     set-values:
-      controller.minAvailable: 1
-      controller.replicaCount: 2
+      controller.minAvailable: 2
+      controller.replicaCount: 3
       defaultBackend.replicaCount: 2
       defaultBackend.minAvailable: 1
       controller.ingressClass: "nginx-ingress"
