@@ -60,7 +60,7 @@ charts:
         metadata: "Brought to you by ReactiveOps"
         refreshInterval: 400
       hpa:
-        metric: route_response_latency_ms_99th_get_ping
+        metric: route_actual_response_latency_ms_99th_get_ping
         target: 30
         max: 40
         min: 3
