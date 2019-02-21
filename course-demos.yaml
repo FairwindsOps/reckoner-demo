@@ -26,7 +26,7 @@ charts:
         - kubectl annotate ns vote linkerd.io/inject=enabled --overwrite
     version: master
     repository:
-      git: git@github.com:sudermanjr/reckoner-demo.git
+      git: git@github.com:reactiveops/reckoner-demo.git
       path: /charts
   load-generator:
     namespace: load
