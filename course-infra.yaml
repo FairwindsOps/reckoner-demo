@@ -25,7 +25,7 @@ charts:
         - kubectl annotate ns cert-manager linkerd.io/inject=enabled --overwrite
         - kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.6/deploy/manifests/00-crds.yaml
       post_install:
-        - until kubectl apply -f manifests/letsencrypt-prod.yaml; do echo "wait for cert-manager to be ready"; sleep 2; done
+        - until kubectl apply -f manifests/letsencrypt-prod.yaml > /dev/null 2>&1 ; do echo "wait for cert-manager to be ready"; sleep 2; done
     set-values:
       ingressShim:
         defaultIssuerName: letsencrypt-prod
