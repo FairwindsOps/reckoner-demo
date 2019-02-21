@@ -71,11 +71,11 @@ charts:
         paths:
           - /
         hosts:
-          - meetup.sudermanjr.com
+          - demo.sudermanjr.com
         tls:
           - secretName: basic-demo-tls
             hosts:
-              - meetup.sudermanjr.com
+              - demo.sudermanjr.com
     values-strings:
       ingress:
         annotations:
