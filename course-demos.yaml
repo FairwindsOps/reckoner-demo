@@ -24,7 +24,7 @@ charts:
       pre_install:
         - kubectl create ns vote > /dev/null 2>&1 || true
         - kubectl annotate ns vote linkerd.io/inject=enabled --overwrite
-    version: kubernetes-meetup
+    version: master
     repository:
       git: git@github.com:sudermanjr/reckoner-demo.git
       path: /charts
