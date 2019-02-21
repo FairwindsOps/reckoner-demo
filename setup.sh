@@ -5,7 +5,7 @@ kubectl create clusterrolebinding cluster-admin-binding-gcloudadmin \
 
 linkerd install --tls optional --proxy-auto-inject --ha --controller-replicas=2 | kubectl apply -f -
 
-kubectl create ns helm-system || true
+kubectl create ns helm-system > /dev/null 2>&1 || true
 
 export TILLER_NAMESPACE=helm-system
 kubectl -n "${TILLER_NAMESPACE:-kube-system}" create sa tiller --dry-run -o yaml --save-config | kubectl apply -f -;
@@ -13,13 +13,13 @@ kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceac
 
 helm init --upgrade --service-account tiller
 
-linkerd check
-
 for ns in "external-dns" "cert-manager"; do
     echo -n "$CLOUDFLARE_API_TOKEN" > /tmp/api-key
-    kubectl create ns "$ns"
-    kubectl -n "$ns" delete secret cloudflare-api-key-secret || true
+    kubectl create ns "$ns" > /dev/null 2>&1 || true
+    kubectl -n "$ns" delete secret cloudflare-api-key-secret > /dev/null 2>&1 || true
     kubectl -n "$ns" create secret generic cloudflare-api-key-secret --from-file=api-key=/tmp/api-key
 done
+
+linkerd check
 
 rm /tmp/api-key
