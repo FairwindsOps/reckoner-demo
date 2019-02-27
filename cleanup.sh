@@ -19,6 +19,7 @@ for chart in " basic-demo" \
     "polling" \
     "prometheus-adapter" \
     "rbac-manager" \
+    "basic-demo" \
     "vote"; do
   helm delete --purge "$chart" 2> /dev/null || true ;
 done
