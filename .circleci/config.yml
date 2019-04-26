@@ -9,6 +9,7 @@ jobs:
       - image: "quay.io/reactiveops/ci-images:v8.0-alpine"
     steps:
       - test/set_env
+      - checkout
       - test/docker_build:
           config: deploy/build.config
 
