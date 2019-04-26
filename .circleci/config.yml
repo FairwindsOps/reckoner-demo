@@ -19,4 +19,4 @@ workflows:
       - hellojob:
           filters:
             branches:
-              only: /.*/
+              only: master
