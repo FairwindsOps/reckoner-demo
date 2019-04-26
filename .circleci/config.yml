@@ -10,6 +10,7 @@ jobs:
     steps:
       - test/set_env
       - checkout
+      - setup_remote_docker
       - test/docker_build:
           config: deploy/build.config
 
