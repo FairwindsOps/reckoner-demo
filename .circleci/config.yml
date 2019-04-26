@@ -8,8 +8,12 @@ jobs:
     docker:
       - image: "quay.io/reactiveops/ci-images:v8.0-alpine"
     steps:
+      - test/set_env
       - test/hello:
           username: "Groot"
+      - run:
+          name: env
+          command: env
 
 workflows:
   version: 2
