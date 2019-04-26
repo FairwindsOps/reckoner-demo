@@ -9,11 +9,8 @@ jobs:
       - image: "quay.io/reactiveops/ci-images:v8.0-alpine"
     steps:
       - test/set_env
-      - test/hello:
-          username: "Groot"
-      - run:
-          name: env
-          command: env
+      - test/docker_build:
+          config: deploy/build.config
 
 workflows:
   version: 2
