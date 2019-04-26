@@ -3,8 +3,10 @@ version: 2.1
 orbs:
   test: reactiveops/test@dev:master
 
-workflows:
-  hello:
-    jobs:
+jobs:
+  hellojob:
+    docker:
+      - image: "quay.io/reactiveops/ci-images:v8.0-alpine"
+    steps:
       - test/hello:
-          username: Groot
+          username: "Groot"
