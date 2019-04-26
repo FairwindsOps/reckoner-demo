@@ -1,17 +1,17 @@
 #!/bin/bash
 
-gcloud container \
+gcloud beta container \
+    clusters create cloud-build \
     --project reactiveopsio \
-    clusters create reckoner-demo \
     --zone us-central1-a \
     --node-locations us-central1-a \
     --machine-type n1-standard-4 \
     --enable-autoscaling \
-    --max-nodes 20 \
+    --max-nodes 10 \
     --min-nodes 1 \
     --preemptible \
     --enable-autorepair \
-    --cluster-version 1.11.7-gke.4 \
+    --cluster-version 1.11.8-gke.6 \
     --no-enable-legacy-authorization \
     --enable-cloud-logging \
     --enable-cloud-monitoring \

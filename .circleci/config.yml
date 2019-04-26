@@ -1,10 +1,10 @@
 version: 2.1
 
 orbs:
-  rok8s-scripts: reactiveops/test@dev:master
+  test: reactiveops/test@dev:master
 
 workflows:
   hello:
     jobs:
-      - rok8s-scripts/hello:
+      - test/hello:
           username: Groot
