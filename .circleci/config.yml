@@ -10,3 +10,12 @@ jobs:
     steps:
       - test/hello:
           username: "Groot"
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - hellojob:
+          filters:
+            branches:
+              only: /.*/
