@@ -22,6 +22,10 @@ jobs:
     steps:
       - test/set_env
       - checkout
+      - run:
+          name: Docker Login
+          command: |
+            docker login -u="reactiveops+circleci" -p="${quay_token}" quay.io
       - test/docker_push:
           config: deploy/build.config
 
