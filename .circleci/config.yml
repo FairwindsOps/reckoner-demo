@@ -38,7 +38,7 @@ workflows:
           filters:
             branches:
               only: master
-      - build:
+      - push:
           context: org-global
           filters:
             branches:
