@@ -10,8 +10,19 @@ jobs:
     steps:
       - test/set_env
       - checkout
-      - setup_remote_docker
+      - run:
+          name: Docker Login
+          command: |
+            docker login -u="reactiveops+circleci" -p="${quay_token}" quay.io
       - test/docker_build:
+          config: deploy/build.config
+  push:
+    docker:
+      - image: "quay.io/reactiveops/ci-images:v8.0-alpine"
+    steps:
+      - test/set_env
+      - checkout
+      - test/docker_push:
           config: deploy/build.config
 
 workflows:
