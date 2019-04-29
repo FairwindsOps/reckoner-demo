@@ -40,6 +40,8 @@ workflows:
               only: master
       - push:
           context: org-global
+          requires:
+            - build
           filters:
             branches:
               only: master
