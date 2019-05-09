@@ -1,1 +1,1 @@
-from nginx:latest
+from ehazlett/docker-demo:latest

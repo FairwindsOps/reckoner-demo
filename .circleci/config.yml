@@ -1,30 +1,17 @@
 version: 2.1
 
 orbs:
-  rok8s-scripts: reactiveops/rok8s-scripts@dev:master
-
-jobs:
-  build_and_push:
-    docker:
-      - image: "quay.io/reactiveops/ci-images:v8.0-alpine"
-    steps:
-      - rok8s-scripts/set_env
-      - checkout
-      - run:
-          name: Docker Login
-          command: |
-            docker login -u="reactiveops+circleci" -p="${quay_token}" quay.io
-      - rok8s-scripts/docker_build:
-          config: deploy/build.config
-      - rok8s-scripts/docker_push:
-          config: deploy/build.config
+  rok8s-scripts: reactiveops/rok8s-scripts@dev:sudermanjr/orbs
 
 workflows:
-  version: 2
-  build:
+  build_and_push:
     jobs:
-      - build_and_push:
-          context: org-global
+      - rok8s/docker_build_and_push:
+          config_file: deploy/build.config
+          docker-login: true
+          username: "reactiveops+circleci"
+          registry: "quay.io"
+          password-variable: quay_token
           filters:
             branches:
               only: master
