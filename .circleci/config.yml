@@ -12,6 +12,7 @@ workflows:
           username: "reactiveops+circleci"
           registry: "quay.io"
           password-variable: quay_token
+          context: org-global
           filters:
             branches:
               only: master
