@@ -11,7 +11,7 @@ This repo is intended as a guide and a demo on how to use Reckoner.
 * [reckoner](https://github.com/FairwindsOps/reckoner) - `pip install -U reckoner`
 * helm - `brew install kubernetes-helm`
 * [optional] loadimpact k6 - `brew install loadimpact/k6/k6`
-* [optional] [rbac-lookup](https://github.com/FairwindsOps/rbac-lookup) - `brew install fairwinds/tap/rbac-lookup`
+* [optional] [rbac-lookup](https://github.com/FairwindsOps/rbac-lookup) - `brew install FairwindsOps/tap/rbac-lookup`
 * [optional] [stern](https://github.com/wercker/stern) - `brew install stern`
 
 ### `./cluster_setup.sh`

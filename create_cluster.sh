@@ -2,7 +2,7 @@
 
 gcloud beta container \
     clusters create cloud-build \
-    --project fairwindsio \
+    --project reckoner-demo \
     --zone us-central1-a \
     --node-locations us-central1-a \
     --machine-type n1-standard-4 \

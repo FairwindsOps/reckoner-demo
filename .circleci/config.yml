@@ -9,7 +9,7 @@ workflows:
       - rok8s/docker_build_and_push:
           config_file: deploy/build.config
           docker-login: true
-          username: "reactiveops+circleci"
+          username: "fairwinds+circleci"
           registry: "quay.io"
           password-variable: fairwinds_quay_token
           context: org-global
