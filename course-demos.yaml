@@ -10,8 +10,8 @@ repositories:
     url: https://kubernetes-charts.storage.googleapis.com
   influx:
     url: http://influx-charts.storage.googleapis.com
-  reactiveops-stable:
-    url: https://charts.reactiveops.com/stable
+  fairwinds-stable:
+    url: https://charts.fairwinds.com/stable
 charts:
   prometheus-adapter:
     repository: stable
@@ -26,7 +26,7 @@ charts:
         - kubectl annotate ns vote linkerd.io/inject=enabled --overwrite
     version: master
     repository:
-      git: git@github.com:reactiveops/reckoner-demo.git
+      git: git@github.com:FairwindsOps/reckoner-demo.git
       path: /charts
   load-generator:
     namespace: load
@@ -35,7 +35,7 @@ charts:
         - kubectl create ns load > /dev/null 2>&1 || true
         - kubectl annotate ns load linkerd.io/inject=enabled --overwrite
     version: 0.1.0
-    repository: reactiveops-incubator
+    repository: fairwinds-incubator
     files:
       - manifests/load-generator-values.yaml
   basic-demo:
@@ -46,14 +46,14 @@ charts:
         - kubectl annotate ns demo linkerd.io/inject=enabled --overwrite
         - kubectl label ns demo circleci-admin=yes --overwrite
     version: 0.1.0
-    repository: reactiveops-incubator
+    repository: fairwinds-incubator
     set-values:
       linkerd:
         serviceProfile: true
         enableRetry: true
       demo:
         title: "Kubernetes Meetup - Boulder"
-        metadata: "Brought to you by ReactiveOps"
+        metadata: "Brought to you by Fairwinds"
         refreshInterval: 400
       hpa:
         metric: route_response_latency_ms_99th_get_ping

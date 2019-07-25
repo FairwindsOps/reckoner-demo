@@ -12,8 +12,8 @@ repositories:
     url: https://kubernetes-charts.storage.googleapis.com
   influx:
     url: http://influx-charts.storage.googleapis.com
-  reactiveops-stable:
-    url: https://charts.reactiveops.com/stable
+  fairwinds-stable:
+    url: https://charts.fairwinds.com/stable
 charts:
   cert-manager:
     version: "v0.6.0"
@@ -45,7 +45,7 @@ charts:
   rbac-manager:
     namespace: rbac-manager
     version: 0.2.1
-    repository: reactiveops-stable
+    repository: fairwinds-stable
     hooks:
       pre_install:
         - kubectl create ns rbac-manager > /dev/null 2>&1 || true

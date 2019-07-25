@@ -2,7 +2,7 @@
 
 gcloud beta container \
     clusters create cloud-build \
-    --project reactiveopsio \
+    --project fairwindsio \
     --zone us-central1-a \
     --node-locations us-central1-a \
     --machine-type n1-standard-4 \
