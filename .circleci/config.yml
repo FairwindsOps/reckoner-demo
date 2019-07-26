@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  rok8s: fairwinds/rok8s-scripts@9.0.5
+  rok8s: fairwinds/rok8s-scripts@dev:sudermanjr/fixing-orb-setup-remote-docker
 
 workflows:
   build_and_push:
